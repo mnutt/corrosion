@@ -24,3 +24,7 @@ add_custom_command(TARGET cargo-build_rust_bin POST_BUILD
     COMMAND
     ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_PROPERTY:rust_bin,LOCATION>" "${CMAKE_CURRENT_BINARY_DIR}/another_dir/moved_bin"
     )
+
+add_executable(consumer consumer.cpp)
+
+target_link_libraries(consumer rust_lib)
